@@ -19,7 +19,6 @@ namespace Digitalroot.Valheim.PluginInfo
 
     public Main()
     {
-      Log.SetSource(AssemblyInfo.Company);
 #if DEBUG
       Log.EnableTrace();
 #endif
