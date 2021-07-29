@@ -10,7 +10,7 @@ namespace Digitalroot.Valheim.PluginInfo
   [BepInPlugin(Guid, Name, Version)]
   public class Main : BaseUnityPlugin
   {
-    public const string Version = "1.0.2";
+    public const string Version = "1.0.3";
     public const string Name = "Digitalroot Plug-in Info";
     private const string Guid = "digitalroot.mods.plugininfo";
     public const string Namespace = nameof(PluginInfo);
