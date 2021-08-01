@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\ILMerge.Fody.1.16.0\build\ILMerge.Fody.props" Condition="Exists('..\packages\ILMerge.Fody.1.16.0\build\ILMerge.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -13,6 +13,7 @@
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <LangVersion>latest</LangVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -80,15 +81,15 @@
       <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\bepinex.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Digitalroot.Valheim.Common.AssemblyInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Digitalroot.Valheim.Common.AssemblyInfo.1.0.0\lib\net462\Digitalroot.Valheim.Common.AssemblyInfo.dll</HintPath>
+    <Reference Include="Digitalroot.Valheim.Common.AssemblyInfo, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Digitalroot.Valheim.Common.AssemblyInfo.1.0.1\lib\net462\Digitalroot.Valheim.Common.AssemblyInfo.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Digitalroot.Valheim.Common.Json, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Digitalroot.Valheim.Common.Json.1.0.2\lib\net462\Digitalroot.Valheim.Common.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Digitalroot.Valheim.Common.Log, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Digitalroot.Valheim.Common.Log.1.0.3\lib\net462\Digitalroot.Valheim.Common.Log.dll</HintPath>
+    <Reference Include="Digitalroot.Valheim.Common.Log, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Digitalroot.Valheim.Common.Log.1.1.4\lib\net462\Digitalroot.Valheim.Common.Log.dll</HintPath>
     </Reference>
     <Reference Include="fastJSON, Version=2.4.0.0, Culture=neutral, PublicKeyToken=6b75a806b86095cd, processorArchitecture=MSIL">
       <HintPath>..\packages\fastJSON.2.4.0.4\lib\net40\fastJSON.dll</HintPath>

@@ -8,23 +8,30 @@ using System.Reflection;
 namespace Digitalroot.Valheim.PluginInfo
 {
   [BepInPlugin(Guid, Name, Version)]
-  public class Main : BaseUnityPlugin
+  public class Main : BaseUnityPlugin, ITraceableLogging
   {
-    public const string Version = "1.0.2";
-    public const string Name = "Digitalroot Plug-in Info";
-    private const string Guid = "digitalroot.mods.plugininfo";
-    public const string Namespace = nameof(PluginInfo);
     private Harmony _harmony;
+    public const string Version = "1.1.0";
+    public const string Name = "Digitalroot Plug-in Info";
+    // ReSharper disable once MemberCanBePrivate.Global
+    public const string Guid = "digitalroot.mods.plugininfo";
+    public const string Namespace = "Digitalroot.Valheim." + nameof(PluginInfo);
     public static Main Instance;
+
+    #region Implementation of ITraceableLogging
+
+    /// <inheritdoc />
+    public string Source => Namespace;
+
+    #endregion
 
     public Main()
     {
-      Log.SetSource(AssemblyInfo.Company);
 #if DEBUG
-      Log.EnableTrace();
+      Log.RegisterSource(this, true);
 #endif
 
-      Log.Trace($"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
+      Log.Trace(this, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
       Instance = this;
     }
 
@@ -37,47 +44,47 @@ namespace Digitalroot.Valheim.PluginInfo
     [UsedImplicitly]
     private void OnDestroy()
     {
-      Log.Trace($"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
+      Log.Trace(this, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
       _harmony?.UnpatchSelf();
     }
 
     public void OnFejdStartupStart()
     {
-      Log.Debug("******* [Digitalroot Plug-ins Loaded] *******");
+      Log.Debug(this, "******* [Digitalroot Plug-ins Loaded] *******");
       foreach (KeyValuePair<string, BepInEx.PluginInfo> pluginInfo in BepInEx.Bootstrap.Chainloader.PluginInfos)
       {
-        Log.Debug($"Key: {pluginInfo.Key}");
-        Log.Debug($"Value: {pluginInfo.Value}");
-        Log.Debug($"GUID: {pluginInfo.Value.Metadata.GUID}");
-        Log.Debug($"Name: {pluginInfo.Value.Metadata.Name}");
-        Log.Debug($"Version: {pluginInfo.Value.Metadata.Version}");
-        Log.Debug($"Location: {pluginInfo.Value.Location}");
+        Log.Debug(this, $"Key: {pluginInfo.Key}");
+        Log.Debug(this, $"Value: {pluginInfo.Value}");
+        Log.Debug(this, $"GUID: {pluginInfo.Value.Metadata.GUID}");
+        Log.Debug(this, $"Name: {pluginInfo.Value.Metadata.Name}");
+        Log.Debug(this, $"Version: {pluginInfo.Value.Metadata.Version}");
+        Log.Debug(this, $"Location: {pluginInfo.Value.Location}");
 
-        Log.Debug($"Dependencies:");
+        Log.Debug(this, $"Dependencies:");
         foreach (BepInDependency dependency in pluginInfo.Value.Dependencies)
         {
-          Log.Debug($"DependencyGUID: {dependency.DependencyGUID}");
-          Log.Debug($"Flags: {dependency.Flags}");
-          Log.Debug($"MinimumVersion: {dependency.MinimumVersion}");
+          Log.Debug(this, $"DependencyGUID: {dependency.DependencyGUID}");
+          Log.Debug(this, $"Flags: {dependency.Flags}");
+          Log.Debug(this, $"MinimumVersion: {dependency.MinimumVersion}");
         }
 
-        Log.Debug($"Incompatibilities:");
+        Log.Debug(this, $"Incompatibilities:");
         foreach (BepInIncompatibility incompatibility in pluginInfo.Value.Incompatibilities)
         {
-          Log.Debug($"DependencyGUID: {incompatibility.IncompatibilityGUID}");
+          Log.Debug(this, $"DependencyGUID: {incompatibility.IncompatibilityGUID}");
         }
 
-        Log.Debug($"Instance: {pluginInfo.Value.Instance}");
-        Log.Debug($"***************************************");
+        Log.Debug(this, $"Instance: {pluginInfo.Value.Instance}");
+        Log.Debug(this, $"***************************************");
       }
 
-      Log.Debug($"DependencyErrors");
+      Log.Debug(this, $"DependencyErrors");
       foreach (string dependencyError in BepInEx.Bootstrap.Chainloader.DependencyErrors)
       {
-        Log.Debug($"{dependencyError}");
+        Log.Debug(this, $"{dependencyError}");
       }
 
-      Log.Debug($"***************************************");
+      Log.Debug(this, $"***************************************");
     }
   }
 }
