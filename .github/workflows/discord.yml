@@ -6,14 +6,12 @@ jobs:
   git:
     runs-on: ubuntu-latest
     steps:
-
     - uses: actions/checkout@v2
-
     - name: Run Discord Webhook
       uses: johnnyhuy/actions-discord-git-webhook@main
-
       with:
         webhook_url: ${{ secrets.VALHEIM_DISCORD_TITANS_WEBHOOK_URL }}
+        repo_name: My Special Repo
 
     # Disable URL links to the repository
     # 
