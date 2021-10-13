@@ -11,7 +11,8 @@ jobs:
       uses: johnnyhuy/actions-discord-git-webhook@main
       with:
         webhook_url: ${{ secrets.VALHEIM_DISCORD_TITANS_WEBHOOK_URL }}
-        repo_name: My Special Repo
+        repo_name: PluginInfo
+        hide_links: true
 
     # Disable URL links to the repository
     # 
