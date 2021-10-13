@@ -1,0 +1,68 @@
+﻿[b][size=4]Digitalroot Valheim Mods
+[/size][/b][size=3]Mods for Valheim using BepInEx, Harmony[b], [/b]and Jotunn (JVL)[/size][b][size=4]
+
+License
+[/size][/b][size=3][url=https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.PluginInfo/blob/main/LICENSE]GNU Affero General Public License v3.0[/url][/size][size=3]
+[/size][size=3]Closed-source license is available for commercial use.[/size]
+
+[b][size=4]Plugin Info[/size][/b]
+
+Writes output to the LogOutput.log detailing mods loaded by [url=https://harmony.pardeike.net]Harmony[/url]. 
+Any dependency errors are listed at the bottom of the output.
+
+[size=4][b]Example Output[/b][/size]
+[font=Courier New][size=2][Debug  :Digitalroot] ******* [Digitalroot Plug-ins Loaded] *******
+[Debug  :Digitalroot] Key: com.jotunn.jotunn
+[Debug  :Digitalroot] Value: Jotunn 2.0.6
+[Debug  :Digitalroot] GUID: com.jotunn.jotunn
+[Debug  :Digitalroot] Name: Jotunn
+[Debug  :Digitalroot] Version: 2.0.6
+[Debug  :Digitalroot] Location: C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\Jotunn\Jotunn.dll
+[Debug  :Digitalroot] Dependencies:
+[Debug  :Digitalroot] Incompatibilities:
+[Debug  :Digitalroot] Instance: BepInEx_Manager (Jotunn.Main)
+[Debug  :Digitalroot] ***************************************
+[Debug  :Digitalroot] Key: maximods.valheim.multicraft
+[Debug  :Digitalroot] Value: MultiCraft 0.2.6
+[Debug  :Digitalroot] GUID: maximods.valheim.multicraft
+[Debug  :Digitalroot] Name: MultiCraft
+[Debug  :Digitalroot] Version: 0.2.6
+[Debug  :Digitalroot] Location: C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\MaxiMods-MultiCraft\MultiCraft.dll
+[Debug  :Digitalroot] Dependencies:
+[Debug  :Digitalroot] DependencyGUID: aedenthorn.CraftFromContainers
+[Debug  :Digitalroot] Flags: SoftDependency
+[Debug  :Digitalroot] MinimumVersion: 0.0
+[Debug  :Digitalroot] Incompatibilities:
+[Debug  :Digitalroot] Instance: BepInEx_Manager (MultiCraft.MultiCraftPlugin)
+[Debug  :Digitalroot] ***************************************
+[Debug  :Digitalroot] DependencyErrors
+[Debug  :Digitalroot] ***************************************[/size][/font]
+
+
+[b][size=4]Dependencies[/size][/b]
+[list]
+[*][size=3][url=https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/]BepInExPack Valheim[/url]﻿[/size]
+[/list]
+[b][size=4]Installation (manual)[/size][/b]
+[list=1]
+[*][size=3]Download the latest release archive (zip) file.[/size]
+[*][size=3]Extract the archive into <Steam Location>\steamapps\common\Valheim\BepInEx\plugins[/size]
+[/list]
+[b][size=4]Configuration[/size][/b]
+[list]
+[*][size=3]No need to configure.[/size]
+[/list]
+[b][size=4]Issues/Bugs[/size][/b]
+Open an issue or bug on the [url=https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.PluginInfo/issues]issue board[/url]﻿﻿.
+
+[b][size=4]Questions[/size][/b]
+Ask a question on the [url=https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.PluginInfo/discussions]discussions board[/url]﻿﻿.
+
+[b][size=4]Support Me[/size][/b] @ [url=https://www.buymeacoffee.com/digitalroot]https://www.buymeacoffee.com/digitalroot[/url]
+[b][size=4]Thanks to[/size][/b]
+[list]
+[*][size=3][url=https://github.com/RandyKnapp]RandyKnapp[/url]﻿ and [url=https://github.com/Menthus123]Menthus[/url] for answering my questions.[/size]
+[*][size=3]The [url=https://discord.gg/GUEBuCuAMz]Valheim Discord[/url]﻿ community. [/size]
+[/list]
+[center][size=3][b][color=#00ffff]Digitalroot can be found in the Odin Plus Team Discord[/color][/b][/size]
+[url=https://discord.gg/mbkPcvu9ax][img]https://digitalroot.net/img/odinplusdisc.png[/img][/url]﻿[/center]

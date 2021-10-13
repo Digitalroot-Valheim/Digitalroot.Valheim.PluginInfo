@@ -1,8 +1,8 @@
 ﻿using BepInEx;
+using BepInEx.Configuration;
 using Digitalroot.Valheim.Common;
 using HarmonyLib;
 using JetBrains.Annotations;
-using Jotunn.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +11,16 @@ using System.Reflection;
 namespace Digitalroot.Valheim.PluginInfo
 {
   [BepInPlugin(Guid, Name, Version)]
+  [BepInDependency(Jotunn.Main.ModGuid, BepInDependency.DependencyFlags.SoftDependency)]
   public class Main : BaseUnityPlugin, ITraceableLogging
   {
     private Harmony _harmony;
-    public const string Version = "1.2.0";
+    public const string Version = "1.3.0";
     public const string Name = "Digitalroot Plug-in Info";
-
     // ReSharper disable once MemberCanBePrivate.Global
     public const string Guid = "digitalroot.mods.plugininfo";
     public const string Namespace = "Digitalroot.Valheim." + nameof(PluginInfo);
+    [UsedImplicitly] public static ConfigEntry<int> NexusId;
     public static Main Instance;
 
     #region Implementation of ITraceableLogging
@@ -42,6 +43,7 @@ namespace Digitalroot.Valheim.PluginInfo
         EnableTrace = false;
 #endif
         Instance = this;
+        NexusId = Config.Bind("General", "NexusID", 1302, new ConfigDescription("Nexus mod ID for updates", null, new ConfigurationManagerAttributes { IsAdminOnly = false, Browsable = false, ReadOnly = true }));
         Log.RegisterSource(Instance);
         Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
       }
@@ -132,9 +134,9 @@ namespace Digitalroot.Valheim.PluginInfo
       try
       {
         Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
-        if (!Common.Utils.DoesPluginExist("com.jotunn.jotunn")) return;
+        if (!Common.Utils.DoesPluginExist(Jotunn.Main.ModGuid)) return;
         Log.Debug(Instance, "******* [Digitalroot JVL Info ] *******");
-        foreach (var modInfo in ModRegistry.GetMods())
+        foreach (var modInfo in Jotunn.Utils.ModRegistry.GetMods())
         {
           Log.Debug(Instance, $"Name: {modInfo.Name}");
           Log.Debug(Instance, $"Version: {modInfo.Version}");

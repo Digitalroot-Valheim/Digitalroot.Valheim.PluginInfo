@@ -1,4 +1,4 @@
-# Digitalroot Valheim Mods
+## Digitalroot Valheim Mods
 Mods for Valheim using BepInEx and Harmony
 
 ## License
