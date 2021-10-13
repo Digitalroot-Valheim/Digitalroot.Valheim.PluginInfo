@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Run Discord Webhook
-      uses: johnnyhuy/actions-discord-git-webhook@v0.0.1
+      uses: johnnyhuy/actions-discord-git-webhook@main
 
       with:
         webhook_url: ${{ secrets.VALHEIM_DISCORD_TITANS_WEBHOOK_URL }}
