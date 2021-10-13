@@ -1,6 +1,6 @@
 # Digitalroot Valheim Mods
 Mods for Valheim using BepInEx and Harmony
- 
+
 ## License
 Closed-source license is available for commercial use.
 
