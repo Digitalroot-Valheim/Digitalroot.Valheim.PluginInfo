@@ -12,7 +12,10 @@ jobs:
       with:
         webhook_url: ${{ secrets.VALHEIM_DISCORD_TITANS_WEBHOOK_URL }}
         repo_name: PluginInfo
-        hide_links: true
+        hide_links: false
+        censor_username: false
+        color: red
+       
 
     # Disable URL links to the repository
     # 
