@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Bootstrap;
 using BepInEx.Configuration;
 using Digitalroot.Valheim.Common;
 using HarmonyLib;
@@ -11,17 +12,18 @@ using System.Reflection;
 namespace Digitalroot.Valheim.PluginInfo
 {
   [BepInPlugin(Guid, Name, Version)]
-  [BepInDependency(Jotunn.Main.ModGuid, BepInDependency.DependencyFlags.SoftDependency)]
+  [BepInDependency(JVLGuid, BepInDependency.DependencyFlags.SoftDependency)]
   public class Main : BaseUnityPlugin, ITraceableLogging
   {
     private Harmony _harmony;
-    public const string Version = "1.3.0";
+    public const string Version = "1.3.1";
     public const string Name = "Digitalroot Plug-in Info";
     // ReSharper disable once MemberCanBePrivate.Global
     public const string Guid = "digitalroot.mods.plugininfo";
     public const string Namespace = "Digitalroot.Valheim." + nameof(PluginInfo);
     [UsedImplicitly] public static ConfigEntry<int> NexusId;
     public static Main Instance;
+    private const string JVLGuid = "com.jotunn.jotunn";
 
     #region Implementation of ITraceableLogging
 
@@ -43,7 +45,7 @@ namespace Digitalroot.Valheim.PluginInfo
         EnableTrace = false;
 #endif
         Instance = this;
-        NexusId = Config.Bind("General", "NexusID", 1302, new ConfigDescription("Nexus mod ID for updates", null, new ConfigurationManagerAttributes { IsAdminOnly = false, Browsable = false, ReadOnly = true }));
+        NexusId = Config.Bind("General", "NexusID", 1302, new ConfigDescription("Nexus mod ID for updates", null, new ConfigurationManagerAttributes { Browsable = false, ReadOnly = true }));
         Log.RegisterSource(Instance);
         Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
       }
@@ -121,7 +123,11 @@ namespace Digitalroot.Valheim.PluginInfo
         }
 
         Log.Debug(Instance, $"***************************************");
-        HandleJVLData();
+
+        if (Common.Utils.DoesPluginExist(JVLGuid))
+        {
+          HandleJVLData();
+        }
       }
       catch (Exception e)
       {
@@ -129,12 +135,14 @@ namespace Digitalroot.Valheim.PluginInfo
       }
     }
 
+    public static bool DoesPluginExist(string pluginGuid) => Chainloader.PluginInfos.Any(keyValuePair => keyValuePair.Value.Metadata.GUID == pluginGuid);
+
     private void HandleJVLData()
     {
       try
       {
         Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
-        if (!Common.Utils.DoesPluginExist(Jotunn.Main.ModGuid)) return;
+
         Log.Debug(Instance, "******* [Digitalroot JVL Info ] *******");
         foreach (var modInfo in Jotunn.Utils.ModRegistry.GetMods())
         {
