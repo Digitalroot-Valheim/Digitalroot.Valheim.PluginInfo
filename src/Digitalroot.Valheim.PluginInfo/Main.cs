@@ -6,6 +6,7 @@ using HarmonyLib;
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -16,14 +17,16 @@ namespace Digitalroot.Valheim.PluginInfo
   public class Main : BaseUnityPlugin, ITraceableLogging
   {
     private Harmony _harmony;
-    public const string Version = "1.3.1";
+    public const string Version = "1.4.0";
     public const string Name = "Digitalroot Plug-in Info";
+
     // ReSharper disable once MemberCanBePrivate.Global
     public const string Guid = "digitalroot.mods.plugininfo";
     public const string Namespace = "Digitalroot.Valheim." + nameof(PluginInfo);
     [UsedImplicitly] public static ConfigEntry<int> NexusId;
     public static Main Instance;
     private const string JVLGuid = "com.jotunn.jotunn";
+    private const string CacheName = "chainloader";
 
     #region Implementation of ITraceableLogging
 
@@ -88,8 +91,28 @@ namespace Digitalroot.Valheim.PluginInfo
       try
       {
         Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
+
+        HandleBepInExData();
+        HandleDupModDetection();
+
+        if (Common.Utils.DoesPluginExist(JVLGuid))
+        {
+          HandleJVLData();
+        }
+      }
+      catch (Exception e)
+      {
+        Log.Error(Instance, e);
+      }
+    }
+
+    private void HandleBepInExData()
+    {
+      try
+      {
         Log.Debug(Instance, "******* [Digitalroot Plug-ins Loaded] *******");
-        foreach (KeyValuePair<string, BepInEx.PluginInfo> pluginInfo in BepInEx.Bootstrap.Chainloader.PluginInfos)
+
+        foreach (KeyValuePair<string, BepInEx.PluginInfo> pluginInfo in Chainloader.PluginInfos)
         {
           Log.Debug(Instance, $"Key: {pluginInfo.Key}");
           Log.Debug(Instance, $"Value: {pluginInfo.Value}");
@@ -117,17 +140,12 @@ namespace Digitalroot.Valheim.PluginInfo
         }
 
         Log.Debug(Instance, $"DependencyErrors");
-        foreach (string dependencyError in BepInEx.Bootstrap.Chainloader.DependencyErrors)
+        foreach (string dependencyError in Chainloader.DependencyErrors)
         {
           Log.Debug(Instance, $"{dependencyError}");
         }
 
         Log.Debug(Instance, $"***************************************");
-
-        if (Common.Utils.DoesPluginExist(JVLGuid))
-        {
-          HandleJVLData();
-        }
       }
       catch (Exception e)
       {
@@ -135,7 +153,36 @@ namespace Digitalroot.Valheim.PluginInfo
       }
     }
 
-    public static bool DoesPluginExist(string pluginGuid) => Chainloader.PluginInfos.Any(keyValuePair => keyValuePair.Value.Metadata.GUID == pluginGuid);
+    private void HandleDupModDetection()
+    {
+      try
+      {
+        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
+        Log.Debug(Instance, "******* [Digitalroot Duplicate Mod Info ] *******");
+
+        var plugins = GetPlugins().ToList();
+
+        foreach (var pluginGroup in plugins.GroupBy(info => info.Metadata.GUID)
+          .Where(pi => pi.Count() >= 2)
+        )
+        {
+          Log.Warning(Instance, $"Duplicates found for '{pluginGroup.Key}', Count {pluginGroup.Count()}");
+          foreach (var pluginInfo in pluginGroup)
+          {
+            Log.Warning(Instance, $"  Name: {pluginInfo.Metadata.Name}");
+            Log.Warning(Instance, $"  GUID: {pluginInfo.Metadata.GUID}");
+            Log.Warning(Instance, $"  Version: {pluginInfo.Metadata.Version}");
+            Log.Warning(Instance, $"  Location: {pluginInfo.Location}");
+            Log.Warning(Instance, $"  ---------------------------------------");
+          }
+        }
+        Log.Debug(Instance, $"***************************************");
+      }
+      catch (Exception e)
+      {
+        Log.Error(Instance, e);
+      }
+    }
 
     private void HandleJVLData()
     {
@@ -258,5 +305,43 @@ namespace Digitalroot.Valheim.PluginInfo
         Log.Error(Instance, e);
       }
     }
+
+    public static bool DoesPluginExist(string pluginGuid) => Chainloader.PluginInfos.Any(keyValuePair => keyValuePair.Value.Metadata.GUID == pluginGuid);
+    public IEnumerable<FileInfo> GetModAssemblies() => Directory.GetFiles(Paths.PluginPath, "*.dll", SearchOption.AllDirectories).Select(filePath => new FileInfo(filePath));
+
+    private IEnumerable<BepInExPluginInfoProxy> GetPlugins()
+    {
+      var pluginTypes = TypeLoader.FindPluginTypes(Paths.PluginPath, Chainloader.ToPluginInfo, cacheName: CacheName);
+      foreach (var keyValuePair in pluginTypes)
+      {
+        foreach (var pluginInfo in keyValuePair.Value)
+        {
+          yield return new BepInExPluginInfoProxy(pluginInfo, keyValuePair.Key);
+        }
+      }
+    }
+
+    #region PluginInfoProxy
+
+    private class BepInExPluginInfoProxy
+    {
+      private readonly BepInEx.PluginInfo _pluginInfo;
+
+      public BepInExPluginInfoProxy(BepInEx.PluginInfo pluginInfo, string location)
+      {
+        _pluginInfo = pluginInfo;
+        Location = location;
+      }
+
+      public BepInPlugin Metadata => _pluginInfo.Metadata;
+      public IEnumerable<BepInProcess> Processes => _pluginInfo.Processes;
+      public IEnumerable<BepInDependency> Dependencies => _pluginInfo.Dependencies;
+      public IEnumerable<BepInIncompatibility> Incompatibilities => _pluginInfo.Incompatibilities;
+      public string Location { get; }
+      public BaseUnityPlugin Instance => _pluginInfo.Instance;
+      public override string ToString() => _pluginInfo.ToString();
+    }
+
+    #endregion
   }
 }
