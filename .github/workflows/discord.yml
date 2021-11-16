@@ -1,6 +1,11 @@
 name: Discord Webhook
 
-on: [push]
+on:
+  push:
+    branches: [ main ] # Default release branch
+    paths:
+      - 'src/**'   
+      - '.github/workflows/**' 
 
 jobs:
   discord:
