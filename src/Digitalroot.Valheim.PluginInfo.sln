@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digitalroot.Valheim.PluginInfo", "Digitalroot.Valheim.PluginInfo\Digitalroot.Valheim.PluginInfo.csproj", "{F7848099-C393-4948-82BD-A413D986A811}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B6C936B0-4E6A-4AB8-A3FF-5AA2C1A0C59C}"
 	ProjectSection(SolutionItems) = preProject
+		..\.gitattributes = ..\.gitattributes
 		..\.gitignore = ..\.gitignore
+		..\LICENSE = ..\LICENSE
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{89E8E94A-90F4-4FD3-B72F-C558A9ED8BF9}"
@@ -20,9 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{A9825C27-BBCE-488B-9D35-1BD96B713082}"
 	ProjectSection(SolutionItems) = preProject
-		..\docs\LICENSE = ..\docs\LICENSE
 		..\docs\README.md = ..\docs\README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digitalroot.Valheim.PluginInfo", "Digitalroot.Valheim.PluginInfo\Digitalroot.Valheim.PluginInfo.csproj", "{87544A9A-2D75-423C-B432-25534214CC0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,10 +31,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F7848099-C393-4948-82BD-A413D986A811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F7848099-C393-4948-82BD-A413D986A811}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F7848099-C393-4948-82BD-A413D986A811}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F7848099-C393-4948-82BD-A413D986A811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87544A9A-2D75-423C-B432-25534214CC0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87544A9A-2D75-423C-B432-25534214CC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87544A9A-2D75-423C-B432-25534214CC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87544A9A-2D75-423C-B432-25534214CC0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

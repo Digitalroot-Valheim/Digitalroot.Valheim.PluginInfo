@@ -17,7 +17,7 @@ namespace Digitalroot.Valheim.PluginInfo
   public class Main : BaseUnityPlugin, ITraceableLogging
   {
     private Harmony _harmony;
-    public const string Version = "1.4.0";
+    public const string Version = "1.4.1";
     public const string Name = "Digitalroot Plug-in Info";
 
     // ReSharper disable once MemberCanBePrivate.Global
