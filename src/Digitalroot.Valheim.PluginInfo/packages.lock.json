@@ -72,9 +72,9 @@
       },
       "JotunnLib": {
         "type": "Direct",
-        "requested": "[2.4.1, )",
-        "resolved": "2.4.1",
-        "contentHash": "y9fHv95btza/1gtthTe74zHShswLSgwTTQiCk4+gwrSmE+vs67bgBPS/eoI2yNVHXSvvxy5yZeeeiBcycMsW3g==",
+        "requested": "[2.4.3, )",
+        "resolved": "2.4.3",
+        "contentHash": "/BkriVmjuL616N3yXV8FkfOF/Cfh5CGt451W52rjnDdbQpr5LLHGFr0Sn/3tIYL09lDjuzDCjghMp0qVtOSlzQ==",
         "dependencies": {
           "HarmonyX": "2.5.5",
           "MonoMod": "21.9.19.1"

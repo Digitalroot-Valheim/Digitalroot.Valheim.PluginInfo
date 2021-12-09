@@ -93,9 +93,10 @@
     <PackageReference Include="ILMerge.Fody" Version="1.22.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="JotunnLib" Version="2.4.1">
+    <PackageReference Include="JotunnLib" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
       <ExcludeAssets>runtime</ExcludeAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="UnityEngine.Modules" Version="[2019.4.32]">
       <PrivateAssets>all</PrivateAssets>
