@@ -14,15 +14,9 @@ namespace Digitalroot.Valheim.PluginInfo
 {
   [BepInPlugin(Guid, Name, Version)]
   [BepInDependency(JVLGuid, BepInDependency.DependencyFlags.SoftDependency)]
-  public class Main : BaseUnityPlugin, ITraceableLogging
+  public partial class Main : BaseUnityPlugin, ITraceableLogging
   {
     private Harmony _harmony;
-    public const string Version = "1.4.1";
-    public const string Name = "Digitalroot Plug-in Info";
-
-    // ReSharper disable once MemberCanBePrivate.Global
-    public const string Guid = "digitalroot.mods.plugininfo";
-    public const string Namespace = "Digitalroot.Valheim." + nameof(PluginInfo);
     [UsedImplicitly] public static ConfigEntry<int> NexusId;
     public static Main Instance;
     private const string JVLGuid = "com.jotunn.jotunn";

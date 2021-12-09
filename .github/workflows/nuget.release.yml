@@ -25,7 +25,6 @@ jobs:
       sln-file-name: Digitalroot.Valheim.PluginInfo
       proj-file-name: Digitalroot.Valheim.PluginInfo
       skip-unit-tests: true
-      #force-assembly-version: true
       is-nuget-package: false
       nexus-enable-upload: true
       nexus-mod-id: 1302
