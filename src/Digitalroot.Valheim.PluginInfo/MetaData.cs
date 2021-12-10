@@ -2,12 +2,7 @@
 {
   public partial class Main
   {
-    #if DEBUG
-    public const string Version = "1.4.1";
-    #else
-    public const string Version = "%%VERSION%%";
-    #endif
-    
+    public const string Version = "0.0.1";
     public const string Name = "Digitalroot Plug-in Info";
     // ReSharper disable once MemberCanBePrivate.Global
     public const string Guid = "digitalroot.mods.plugininfo";
