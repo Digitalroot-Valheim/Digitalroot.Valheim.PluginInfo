@@ -19,7 +19,7 @@ namespace Digitalroot.Valheim.PluginInfo
       {
         try
         {
-          Log.Trace(Main.Instance, $"{Main.Namespace}.{MethodBase.GetCurrentMethod().DeclaringType?.Name}.{MethodBase.GetCurrentMethod().Name}");
+          Log.Trace(Main.Instance, $"{Main.Namespace}.{MethodBase.GetCurrentMethod()?.DeclaringType?.Name}.{MethodBase.GetCurrentMethod()?.Name}");
 
           Main.Instance.OnFejdStartupStart();
         }

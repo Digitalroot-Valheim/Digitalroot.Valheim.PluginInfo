@@ -44,7 +44,7 @@ namespace Digitalroot.Valheim.PluginInfo
         Instance = this;
         NexusId = Config.Bind("General", "NexusID", 1302, new ConfigDescription("Nexus mod ID for updates", null, new ConfigurationManagerAttributes { Browsable = false, ReadOnly = true }));
         Log.RegisterSource(Instance);
-        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
+        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod()?.Name}()");
       }
       catch (Exception e)
       {
@@ -57,7 +57,7 @@ namespace Digitalroot.Valheim.PluginInfo
     {
       try
       {
-        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
+        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod()?.Name}()");
         _harmony = Harmony.CreateAndPatchAll(typeof(Main).Assembly, Guid);
       }
       catch (Exception e)
@@ -71,7 +71,7 @@ namespace Digitalroot.Valheim.PluginInfo
     {
       try
       {
-        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
+        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod()?.Name}()");
         _harmony?.UnpatchSelf();
       }
       catch (Exception e)
@@ -84,7 +84,7 @@ namespace Digitalroot.Valheim.PluginInfo
     {
       try
       {
-        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
+        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod()?.Name}()");
 
         HandleBepInExData();
         HandleDupModDetection();
@@ -151,7 +151,7 @@ namespace Digitalroot.Valheim.PluginInfo
     {
       try
       {
-        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
+        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod()?.Name}()");
         Log.Debug(Instance, "******* [Digitalroot Duplicate Mod Info ] *******");
 
         var plugins = GetPlugins().ToList();
@@ -182,7 +182,7 @@ namespace Digitalroot.Valheim.PluginInfo
     {
       try
       {
-        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod().Name}()");
+        Log.Trace(Instance, $"{GetType().Namespace}.{GetType().Name}.{MethodBase.GetCurrentMethod()?.Name}()");
 
         Log.Debug(Instance, "******* [Digitalroot JVL Info ] *******");
         foreach (var modInfo in Jotunn.Utils.ModRegistry.GetMods())

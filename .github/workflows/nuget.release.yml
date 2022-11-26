@@ -3,6 +3,8 @@ name: Release
 concurrency: ci-${{ github.ref }}
 
 on:
+  workflow_dispatch:
+    branches: [ main ] # Default release branch
   push:
     branches: [ main ] # Default release branch
     paths:
@@ -24,8 +26,6 @@ jobs:
     with:
       sln-file-name: Digitalroot.Valheim.PluginInfo
       proj-file-name: Digitalroot.Valheim.PluginInfo
-      skip-unit-tests: true
       is-nuget-package: false
-      nexus-enable-upload: true
+      nexus-enable-upload: false
       nexus-mod-id: 1302
-
