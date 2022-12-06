@@ -15,6 +15,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{0B780DC6-CDC0-4FE8-93BD-2945C9B0B8A6}"
 	ProjectSection(SolutionItems) = preProject
 		..\.github\workflows\discord.yml = ..\.github\workflows\discord.yml
+		..\.github\workflows\nuget.autoupdate.yml = ..\.github\workflows\nuget.autoupdate.yml
 		..\.github\workflows\nuget.release.yml = ..\.github\workflows\nuget.release.yml
 	EndProjectSection
 EndProject
@@ -25,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{A9825C27-B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{8476F12E-C922-4510-8102-CAAA61DEEE2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digitalroot.Valheim.PluginInfo", "Digitalroot.Valheim.PluginInfo\Digitalroot.Valheim.PluginInfo.csproj", "{0B240E24-BDA3-46C9-B786-E6905E6D949C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digitalroot.Valheim.PluginInfo", "Digitalroot.Valheim.PluginInfo\Digitalroot.Valheim.PluginInfo.csproj", "{0B240E24-BDA3-46C9-B786-E6905E6D949C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
