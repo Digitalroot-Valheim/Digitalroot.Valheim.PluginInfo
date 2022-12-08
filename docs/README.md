@@ -1,8 +1,4 @@
-[![Release](https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.PluginInfo/actions/workflows/nuget.release.yml/badge.svg)](https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.PluginInfo/actions/workflows/nuget.release.yml)
-[![Discord Webhook](https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.PluginInfo/actions/workflows/discord.yml/badge.svg)](https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.PluginInfo/actions/workflows/discord.yml)
-
-## Digitalroot Valheim Mods
-Mods for Valheim using BepInEx and Harmony
+# PluginInfo
 
 ## License
 Closed-source license is available for commercial use.
