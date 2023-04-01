@@ -3,6 +3,7 @@ using BepInEx.Bootstrap;
 using BepInEx.Configuration;
 using Digitalroot.Valheim.Common;
 using HarmonyLib;
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,8 +17,7 @@ namespace Digitalroot.Valheim.PluginInfo
   public partial class Main : BaseUnityPlugin, ITraceableLogging
   {
     private Harmony _harmony;
-    // ReSharper disable once MemberCanBePrivate.Global
-    public static ConfigEntry<int> NexusId;
+    [UsedImplicitly] public static ConfigEntry<int> NexusId;
     public static Main Instance;
     private const string JVLGuid = "com.jotunn.jotunn";
     private const string CacheName = "chainloader";
@@ -52,7 +52,7 @@ namespace Digitalroot.Valheim.PluginInfo
       }
     }
 
-    // ReSharper disable once UnusedMember.Local
+    [UsedImplicitly] 
     private void Awake()
     {
       try
@@ -66,7 +66,7 @@ namespace Digitalroot.Valheim.PluginInfo
       }
     }
 
-    // ReSharper disable once UnusedMember.Local
+    [UsedImplicitly] 
     private void OnDestroy()
     {
       try
@@ -300,7 +300,10 @@ namespace Digitalroot.Valheim.PluginInfo
       }
     }
 
+    [UsedImplicitly] 
     public static bool DoesPluginExist(string pluginGuid) => Chainloader.PluginInfos.Any(keyValuePair => keyValuePair.Value.Metadata.GUID == pluginGuid);
+    
+    [UsedImplicitly] 
     public IEnumerable<FileInfo> GetModAssemblies() => Directory.GetFiles(Paths.PluginPath, "*.dll", SearchOption.AllDirectories).Select(filePath => new FileInfo(filePath));
 
     private IEnumerable<BepInExPluginInfoProxy> GetPlugins()
@@ -328,16 +331,12 @@ namespace Digitalroot.Valheim.PluginInfo
       }
 
       public BepInPlugin Metadata => _pluginInfo.Metadata;
-      // ReSharper disable once UnusedMember.Local
-      public IEnumerable<BepInProcess> Processes => _pluginInfo.Processes;
-      // ReSharper disable once UnusedMember.Local
-      public IEnumerable<BepInDependency> Dependencies => _pluginInfo.Dependencies;
-      // ReSharper disable once UnusedMember.Local
-      public IEnumerable<BepInIncompatibility> Incompatibilities => _pluginInfo.Incompatibilities;
+      [UsedImplicitly] public IEnumerable<BepInProcess> Processes => _pluginInfo.Processes;
+      [UsedImplicitly] public IEnumerable<BepInDependency> Dependencies => _pluginInfo.Dependencies;
+      [UsedImplicitly] public IEnumerable<BepInIncompatibility> Incompatibilities => _pluginInfo.Incompatibilities;
       public string Location { get; }
-      // ReSharper disable once UnusedMember.Local
       // ReSharper disable once MemberHidesStaticFromOuterClass
-      public BaseUnityPlugin Instance => _pluginInfo.Instance;
+      [UsedImplicitly] public BaseUnityPlugin Instance => _pluginInfo.Instance;
       public override string ToString() => _pluginInfo.ToString();
     }
 
