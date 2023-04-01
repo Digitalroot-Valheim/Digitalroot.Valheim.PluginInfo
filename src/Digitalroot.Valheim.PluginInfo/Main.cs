@@ -3,7 +3,6 @@ using BepInEx.Bootstrap;
 using BepInEx.Configuration;
 using Digitalroot.Valheim.Common;
 using HarmonyLib;
-using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +16,8 @@ namespace Digitalroot.Valheim.PluginInfo
   public partial class Main : BaseUnityPlugin, ITraceableLogging
   {
     private Harmony _harmony;
-    [UsedImplicitly] public static ConfigEntry<int> NexusId;
+    // ReSharper disable once MemberCanBePrivate.Global
+    public static ConfigEntry<int> NexusId;
     public static Main Instance;
     private const string JVLGuid = "com.jotunn.jotunn";
     private const string CacheName = "chainloader";
@@ -52,7 +52,7 @@ namespace Digitalroot.Valheim.PluginInfo
       }
     }
 
-    [UsedImplicitly]
+    // ReSharper disable once UnusedMember.Local
     private void Awake()
     {
       try
@@ -66,7 +66,7 @@ namespace Digitalroot.Valheim.PluginInfo
       }
     }
 
-    [UsedImplicitly]
+    // ReSharper disable once UnusedMember.Local
     private void OnDestroy()
     {
       try
@@ -328,10 +328,15 @@ namespace Digitalroot.Valheim.PluginInfo
       }
 
       public BepInPlugin Metadata => _pluginInfo.Metadata;
+      // ReSharper disable once UnusedMember.Local
       public IEnumerable<BepInProcess> Processes => _pluginInfo.Processes;
+      // ReSharper disable once UnusedMember.Local
       public IEnumerable<BepInDependency> Dependencies => _pluginInfo.Dependencies;
+      // ReSharper disable once UnusedMember.Local
       public IEnumerable<BepInIncompatibility> Incompatibilities => _pluginInfo.Incompatibilities;
       public string Location { get; }
+      // ReSharper disable once UnusedMember.Local
+      // ReSharper disable once MemberHidesStaticFromOuterClass
       public BaseUnityPlugin Instance => _pluginInfo.Instance;
       public override string ToString() => _pluginInfo.ToString();
     }

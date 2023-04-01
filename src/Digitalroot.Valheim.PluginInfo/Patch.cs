@@ -1,18 +1,16 @@
 ﻿using Digitalroot.Valheim.Common;
 using HarmonyLib;
-using JetBrains.Annotations;
 using System;
 using System.Reflection;
 
 namespace Digitalroot.Valheim.PluginInfo
 {
-  [UsedImplicitly]
+  // ReSharper disable once ClassNeverInstantiated.Global
   public class Patch
   {
     [HarmonyPatch(typeof(FejdStartup), nameof(FejdStartup.Start))]
     public class PatchFejdStartupStart
     {
-      [UsedImplicitly]
       [HarmonyPostfix]
       [HarmonyPriority(Priority.Low)]
       public static void Postfix()
