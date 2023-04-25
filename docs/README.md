@@ -51,3 +51,9 @@ Any dependency errors are listed at the bottom of the output.
 - <a href="https://github.com/RandyKnapp" target="_blank">RandyKnapp</a> and <a href="https://github.com/Menthus123" target="_blank">Menthus</a> for answering my questions.
 - The <a href="https://github.com/Valheim-Modding/Jotunn" target="_blank">Jotunn</a> crew for creating great examples.
 - The <a href="https://discord.gg/GUEBuCuAMz" target="_blank">Valheim Discord</a> community. 
+<br />
+
+<p align="center">
+<b>Digitalroot can be found in the Valhalla Legends Discord</b><br /><br />
+  <a href="https://discord.gg/SsMW3rm67u" target="_blank"><img src="https://digitalroot.net/img/vl/vl_logo_125x154.png"></a>
+</p>
