@@ -26,6 +26,7 @@ jobs:
       nexus-api-key: ${{ secrets.NEXUS_API_KEY }}
       nexus-cookie-nxid-header: ${{ secrets.NEXUS_COOKIE_HEADER_NEXUSID }}
       nexus-cookie-sid-header: ${{ secrets.NEXUS_COOKIE_HEADER_SID_DEVELOP }}
+      ts-api-key: ${{ secrets.TS_SERVICEACCOUNT }}
       
     with:
       sln-file-name: Digitalroot.Valheim.PluginInfo
@@ -33,3 +34,9 @@ jobs:
       is-nuget-package: false
       nexus-enable-upload: true
       nexus-mod-id: 1302
+      ts-enable-upload: true
+      ts-name: Plugin_Info
+      ts-description: "Writes output to the LogOutput.log detailing mods loaded by Harmony. Any dependency errors are listed at the bottom of the output."
+      ts-categories: "client-side server-side utility" #https://thunderstore.io/api/experimental/community/valheim/category/
+      ts-dependencies: denikson-BepInExPack_Valheim@5.4.2105 ValheimModding-Jotunn@2.12.1
+      
