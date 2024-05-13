@@ -32,11 +32,11 @@ jobs:
       sln-file-name: Digitalroot.Valheim.PluginInfo
       proj-file-name: Digitalroot.Valheim.PluginInfo
       is-nuget-package: false
-      nexus-enable-upload: true
+      nexus-enable-upload: false
       nexus-mod-id: 1302
       ts-enable-upload: true
       ts-name: Plugin_Info
       ts-description: "Writes output to the LogOutput.log detailing mods loaded by Harmony. Any dependency errors are listed at the bottom of the output."
       ts-categories: "client-side server-side utility" #https://thunderstore.io/api/experimental/community/valheim/category/
-      ts-dependencies: denikson-BepInExPack_Valheim@5.4.2105 ValheimModding-Jotunn@2.12.1
+      ts-dependencies: ValheimModding-Jotunn-2.19.4
       
