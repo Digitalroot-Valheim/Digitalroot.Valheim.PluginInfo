@@ -27,6 +27,7 @@ jobs:
       nexus-cookie-nxid-header: ${{ secrets.NEXUS_COOKIE_HEADER_NEXUSID }}
       nexus-cookie-sid-header: ${{ secrets.NEXUS_COOKIE_HEADER_SID_DEVELOP }}
       ts-api-key: ${{ secrets.TS_SERVICEACCOUNT }}
+      webhook_url: ${{ secrets.VALHEIM_DISCORD_TITANS_WEBHOOK_URL }}
       
     with:
       sln-file-name: Digitalroot.Valheim.PluginInfo
