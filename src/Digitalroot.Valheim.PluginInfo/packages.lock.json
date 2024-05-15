@@ -56,9 +56,9 @@
       },
       "Digitalroot.Valheim.References.JvL": {
         "type": "Direct",
-        "requested": "[2.19.4, )",
-        "resolved": "2.19.4",
-        "contentHash": "dQd2yW6vti6c3emnD+uxNd+wU//LkHKLabkZV3aetFTco9mE+tFyNqZEe3xzk0dFfUyblmF06KqM9m8gJFBfdg=="
+        "requested": "[2.20.0, )",
+        "resolved": "2.20.0",
+        "contentHash": "4CCkEMVzlRDPeMQutVbRc3N0Ru4I28+2gbL788KD3+TkkqRX38+YMt1ez8gy42rka/IJ1SquxZdQnUJDnq/gcw=="
       },
       "ErrorProne.NET.CoreAnalyzers": {
         "type": "Direct",
