@@ -17,6 +17,7 @@
     <Company>Digitalroot Technologies</Company>
     <Product>Digitalroot Valheim Logging</Product>
     <Description>Writes output to the LogOutput.log detailing mods loaded by Harmony. Any dependency errors are listed at the bottom of the output. </Description>
+    <NeutralLanguage>en-US</NeutralLanguage>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <DebugType>embedded</DebugType>
     <RestoreAdditionalProjectSources>
