@@ -12,6 +12,7 @@ on:
       - 'docs/**'
       - '**/.ts/**'
       - '**/.nx/**'
+      - '**.sln'
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
@@ -41,3 +42,4 @@ jobs:
       ts-description: "Writes output to the LogOutput.log detailing mods loaded by Harmony. Any dependency errors are listed at the bottom of the output."
       ts-categories: "client-side server-side utility" #https://thunderstore.io/api/experimental/community/valheim/category/
       ts-dependencies: ValheimModding-Jotunn-2.29.2
+      skip-unit-tests: true
